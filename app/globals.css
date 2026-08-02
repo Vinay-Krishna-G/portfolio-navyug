@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+/* ─── NavYug Design Tokens — Light Mode ─────────────────── */
+:root {
+  /* Backgrounds */
+  --ny-bg:          #FAFAFA;
+  --ny-bg-2:        #F4F4F4;
+  --ny-surface:     #FFFFFF;
+  --ny-surface-2:   #F8F8F8;
+  --ny-surface-3:   #F0F0F0;
+
+  /* Text */
+  --ny-foreground:  #0F0F0F;
+  --ny-muted:       #6B6B6B;
+  --ny-dim:         #A0A0A0;
+
+  /* NavYug accent — silver/pearl identity */
+  --ny-accent:      #D4D4D4;
+  --ny-accent-fg:   #0F0F0F;
+
+  /* Lime — used sparingly: CTA, AI badge, hover accent */
+  --ny-lime:        #B9FF66;
+  --ny-lime-dim:    rgba(185, 255, 102, 0.15);
+
+  /* Borders */
+  --ny-border:      rgba(0, 0, 0, 0.07);
+  --ny-border-lg:   rgba(0, 0, 0, 0.12);
+
+  /* Shadows */
+  --ny-shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --ny-shadow-md:   0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --ny-shadow-lg:   0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --ny-shadow-xl:   0 24px 64px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
+
+  /* Service card tints */
+  --ny-tint-lime:   rgba(185, 255, 102, 0.10);
+  --ny-tint-blue:   rgba(99,  170, 255, 0.10);
+  --ny-tint-purple: rgba(167, 139, 250, 0.10);
+  --ny-tint-amber:  rgba(251, 191,  36, 0.10);
+  --ny-tint-teal:   rgba(52,  211, 153, 0.10);
+  --ny-tint-rose:   rgba(251, 113, 133, 0.10);
+
+  /* Icon bg tints */
+  --ny-icon-lime:   rgba(185, 255, 102, 0.20);
+  --ny-icon-blue:   rgba(99,  170, 255, 0.18);
+  --ny-icon-purple: rgba(167, 139, 250, 0.18);
+  --ny-icon-amber:  rgba(251, 191,  36, 0.18);
+  --ny-icon-teal:   rgba(52,  211, 153, 0.18);
+  --ny-icon-rose:   rgba(251, 113, 133, 0.18);
+
+  /* shadcn token bridge */
+  --background:           var(--ny-bg);
+  --foreground:           var(--ny-foreground);
+  --card:                 var(--ny-surface);
+  --card-foreground:      var(--ny-foreground);
+  --popover:              var(--ny-surface);
+  --popover-foreground:   var(--ny-foreground);
+  --primary:              var(--ny-foreground);
+  --primary-foreground:   var(--ny-bg);
+  --secondary:            var(--ny-surface-3);
+  --secondary-foreground: var(--ny-foreground);
+  --muted:                var(--ny-surface-2);
+  --muted-foreground:     var(--ny-muted);
+  --accent:               var(--ny-surface-3);
+  --accent-foreground:    var(--ny-foreground);
+  --destructive:          #ef4444;
+  --destructive-foreground: #fff;
+  --border:               var(--ny-border);
+  --input:                var(--ny-surface-2);
+  --ring:                 var(--ny-accent);
+  --radius:               0.75rem;
+}
+
+@theme inline {
+  --font-sans:    var(--font-outfit);
+  --font-display: var(--font-space-grotesk);
+
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 6px);
+}
+
+/* ─── Base ───────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-color: var(--ny-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--ny-bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    background-color: var(--ny-bg);
+    color: var(--ny-foreground);
+    font-family: var(--font-outfit), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background-color: var(--ny-foreground);
+    color: var(--ny-bg);
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--ny-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--ny-accent); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ny-muted); }
+}
+
+/* ─── Typography ─────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* ─── Layout ─────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+.container-xl {
+  width: 100%;
+  max-width: 72rem;   /* 1152px — generous but not too wide */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+/* ─── Premium card surface ───────────────────────────────── */
+.card-premium {
+  background: var(--ny-surface);
+  border: 1px solid var(--ny-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--ny-shadow-md);
+  transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.card-premium:hover {
+  box-shadow: var(--ny-shadow-xl);
+  transform: translateY(-3px);
+  border-color: var(--ny-border-lg);
+}
+
+/* ─── Section label ──────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+  margin-bottom: 1.25rem;
+}
+.section-label::before {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--ny-dim);
+}
+
+/* ─── Buttons ────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--ny-lime);
+  color: #0F0F0F;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(185, 255, 102, 0.4);
+}
+.btn-primary:hover {
+  background-color: #a8f547;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 22px rgba(185, 255, 102, 0.55);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--ny-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--ny-border-lg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  border-color: var(--ny-foreground);
+  background-color: rgba(0,0,0,0.04);
+  transform: translateY(-1px);
+}
+
+/* ─── Lime badge / highlight ─────────────────────────────── */
+.badge-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--ny-lime-dim);
+  color: #3a7a00;
+  border: 1px solid rgba(185, 255, 102, 0.35);
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Divider dot ────────────────────────────────────────── */
+.dot-divider {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: var(--ny-dim);
+  display: inline-block;
+}
