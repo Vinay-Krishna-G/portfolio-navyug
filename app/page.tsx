@@ -5,9 +5,8 @@ import StatsSection from "@/components/stats/StatsSection";
 import ServicesSection from "@/components/services/ServicesSection";
 import ShowcaseSection from "@/components/showcase/ShowcaseSection";
 import ProcessSection from "@/components/process/ProcessSection";
-import TeamSection from "@/components/team/TeamSection";
 import WhyNavyugSection from "@/components/why-navyug/WhyNavyugSection";
-import FAQSection from "@/components/faq/FAQSection";
+import ConversationEngine from "@/components/conversation-engine/ConversationEngine";
 import ContactSection from "@/components/contact/ContactSection";
 import Footer from "@/components/footer/Footer";
 
@@ -21,9 +20,8 @@ export default function Home() {
       <ServicesSection />
       <ShowcaseSection />
       <ProcessSection />
-      <TeamSection />
       <WhyNavyugSection />
-      <FAQSection />
+      <ConversationEngine />
       <ContactSection />
       <Footer />
     </main>

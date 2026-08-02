@@ -10,8 +10,8 @@ import { BRAND } from "@/lib/brand";
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Team", href: "#team" },
+  { label: "How We Work", href: "#process" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
