@@ -57,14 +57,14 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 pointer-events-none"
       style={{
         background: scrolled ? "transparent" : "rgba(250,250,250,0.90)",
-        backdropFilter: scrolled ? "none" : "blur(16px)",
+        backdropFilter: scrolled ? "none" : "blur(14px)",
         borderBottom: scrolled ? "1px solid transparent" : "1px solid rgba(0,0,0,0.06)",
       }}
     >
-      <div className="container-xl h-full flex items-center justify-between">
+      <div className="container-xl h-full flex items-center justify-between pointer-events-auto">
         {/* Left Column (25%): Anchored Logo Mark */}
         <div className="w-1/2 sm:w-1/4 flex items-center justify-start shrink-0">
           <Link
@@ -76,21 +76,21 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center Column (50%): Centered Floating Liquid Glass Pill */}
+        {/* Center Column (50%): Centered Content-Hugging Floating Liquid Glass Pill */}
         <div className="w-2/4 hidden lg:flex items-center justify-center shrink-0">
           <nav aria-label="Main navigation">
             <motion.div
-              className="flex items-center justify-center gap-7 sm:gap-8 px-6 py-2.5 rounded-full select-none min-w-[560px] max-w-[640px] transition-all duration-300"
+              className="flex items-center justify-center gap-6 sm:gap-7 px-6 py-2 rounded-full select-none w-fit max-w-fit transition-all duration-350 ease-out h-11 sm:h-12"
               style={{
                 background: scrolled
-                  ? "linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.46) 100%)"
+                  ? "rgba(255, 255, 255, 0.58)"
                   : "transparent",
-                backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-                WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-                border: scrolled ? "1px solid rgba(255, 255, 255, 0.72)" : "1px solid transparent",
+                backdropFilter: scrolled ? "blur(14px) saturate(180%)" : "none",
+                WebkitBackdropFilter: scrolled ? "blur(14px) saturate(180%)" : "none",
+                border: scrolled ? "1px solid rgba(255, 255, 255, 0.75)" : "1px solid transparent",
                 borderRadius: scrolled ? "9999px" : "0px",
                 boxShadow: scrolled
-                  ? "0 10px 28px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.65)"
+                  ? "0 8px 24px rgba(0, 0, 0, 0.06)"
                   : "none",
               }}
             >
@@ -101,17 +101,17 @@ export default function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`relative text-sm font-medium transition-colors duration-200 py-1 whitespace-nowrap ${
-                      isActive ? "text-neutral-900 font-bold" : "text-neutral-600 hover:text-neutral-900"
+                    className={`relative text-sm transition-colors duration-200 py-1 whitespace-nowrap ${
+                      isActive ? "text-neutral-900 font-semibold" : "text-neutral-600 hover:text-neutral-900"
                     }`}
                   >
                     {link.label}
 
-                    {/* Active / Hover 2px Lime Indicator */}
+                    {/* Active Centered 20px x 2px Lime Bar */}
                     {isActive && (
                       <motion.span
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full bg-[#B9FF66]"
+                        layoutId="activeNavIndicatorBar"
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-[2px] rounded-full bg-[#B9FF66]"
                         transition={{ duration: 0.25, ease: "easeOut" }}
                       />
                     )}
@@ -122,11 +122,11 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Right Column (25%): Anchored Lime CTA */}
+        {/* Right Column (25%): Anchored Clean Lime CTA */}
         <div className="w-1/2 sm:w-1/4 hidden lg:flex items-center justify-end shrink-0">
           <a
             href="#contact"
-            className="btn-primary text-sm font-bold px-6 py-3 rounded-full transition-all duration-200 hover:brightness-105 hover:shadow-md cursor-pointer"
+            className="btn-primary text-sm font-bold px-6 py-3 rounded-full transition-all duration-250 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(0,0,0,0.08)] hover:brightness-105 cursor-pointer"
             style={{ background: "#B9FF66", color: "#0F0F0F" }}
           >
             Let&apos;s Talk →
@@ -168,13 +168,13 @@ export default function Navbar() {
       {/* Mobile dropdown */}
       <motion.div
         id="mobile-menu"
-        className="lg:hidden overflow-hidden"
+        className="lg:hidden overflow-hidden pointer-events-auto"
         initial={false}
         animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
         style={{
           background: "rgba(250,250,250,0.97)",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(14px)",
           borderTop: "1px solid var(--ny-border)",
         }}
       >
