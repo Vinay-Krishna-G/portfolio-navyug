@@ -1,0 +1,26 @@
+{
+  "name": "NavYug — Premium Digital Experiences",
+  "short_name": "NavYug",
+  "icons": [
+    {
+      "src": "/favicon/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#FAFAFA",
+  "background_color": "#FAFAFA",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -146,14 +146,7 @@
 
 /* ─── Layout ─────────────────────────────────────────────── */
 .section-padding {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-@media (min-width: 1024px) {
-  .section-padding {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-  }
+  padding-block: clamp(3.5rem, 5vw, 5.5rem);
 }
 
 .container-xl {
@@ -165,18 +158,32 @@
   padding-right: 1.75rem;
 }
 
-/* ─── Premium card surface ───────────────────────────────── */
+/* ─── Premium card surface & Floating Paper Shadow ───────── */
+.shadow-layered {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    0 12px 28px rgba(0, 0, 0, 0.05);
+}
+
+.mask-gradient-v {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
 .card-premium {
   background: var(--ny-surface);
-  border: 1px solid var(--ny-border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--ny-shadow-md);
-  transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02), 0 8px 20px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 .card-premium:hover {
-  box-shadow: var(--ny-shadow-xl);
-  transform: translateY(-3px);
-  border-color: var(--ny-border-lg);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    0 12px 28px rgba(0, 0, 0, 0.05),
+    0 20px 48px rgba(0, 0, 0, 0.03);
+  transform: translateY(-8px);
+  border-color: rgba(0, 0, 0, 0.10);
 }
 
 /* ─── Section label ──────────────────────────────────────── */
@@ -204,7 +211,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--ny-lime);
+  background: linear-gradient(180deg, #C9FF73 0%, #B9FF66 100%);
   color: #0F0F0F;
   font-size: 0.875rem;
   font-weight: 600;
@@ -212,14 +219,14 @@
   border-radius: 9999px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(185, 255, 102, 0.4);
+  box-shadow: 0 12px 30px rgba(185, 255, 102, 0.25);
 }
 .btn-primary:hover {
-  background-color: #a8f547;
+  background: linear-gradient(180deg, #D4FF85 0%, #A8F547 100%);
   transform: translateY(-1.5px);
-  box-shadow: 0 8px 22px rgba(185, 255, 102, 0.55);
+  box-shadow: 0 16px 36px rgba(185, 255, 102, 0.4);
 }
 .btn-primary:active { transform: translateY(0); }
 

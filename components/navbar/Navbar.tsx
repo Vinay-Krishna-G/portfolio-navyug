@@ -4,6 +4,9 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
+import NavYugLogo from "@/components/branding/NavYugLogo";
+import { BRAND } from "@/lib/brand";
+
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
@@ -33,22 +36,10 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid var(--ny-border)" : "1px solid transparent",
       }}
     >
-      <div className="container-xl py-5 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group" aria-label="NavYug home">
-          <motion.span
-            className="text-xl font-display font-bold tracking-tight"
-            style={{ color: "var(--ny-foreground)" }}
-            whileHover={{ opacity: 0.7 }}
-            transition={{ duration: 0.15 }}
-          >
-            NavYug
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full ml-0.5 align-middle translate-y-[-2px]"
-              style={{ background: "var(--ny-lime)" }}
-              aria-hidden="true"
-            />
-          </motion.span>
+      <div className="container-xl py-4 flex items-center justify-between">
+        {/* Transparent Logo Mark */}
+        <Link href="/" className="flex items-center mr-[14px] group select-none" aria-label={`${BRAND.name} home`}>
+          <NavYugLogo variant="mark" priority size={36} className="h-[26px] sm:h-[30px] lg:h-[36px]" />
         </Link>
 
         {/* Desktop nav */}
