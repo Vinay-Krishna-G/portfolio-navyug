@@ -23,10 +23,18 @@ export function useConversationTimeline(
 
   const hasStartedRef = useRef(false);
   const messagesRef = useRef(messages);
+  const isUnmountedRef = useRef(false);
 
   useEffect(() => {
     messagesRef.current = messages;
   }, [messages]);
+
+  useEffect(() => {
+    isUnmountedRef.current = false;
+    return () => {
+      isUnmountedRef.current = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (!isVisible || hasStartedRef.current || messagesRef.current.length === 0) {
@@ -34,14 +42,13 @@ export function useConversationTimeline(
     }
 
     hasStartedRef.current = true;
-    let isCancelled = false;
 
     const runTimeline = async () => {
       setStatus("waiting");
       await wait(TIMELINE.initialPause);
 
       for (const msg of messagesRef.current) {
-        if (isCancelled) break;
+        if (isUnmountedRef.current) break;
 
         if (msg.type === "typing") {
           setActiveTypingId(msg.id);
@@ -60,16 +67,12 @@ export function useConversationTimeline(
         }
       }
 
-      if (!isCancelled) {
+      if (!isUnmountedRef.current) {
         setStatus("finished");
       }
     };
 
     runTimeline();
-
-    return () => {
-      isCancelled = true;
-    };
   }, [isVisible]);
 
   return { visibleIds, visibleLookup, activeTypingId, status };

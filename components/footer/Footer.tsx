@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import NavYugLogo from "@/components/branding/NavYugLogo";
+import { motion } from "framer-motion";
 import { BRAND } from "@/lib/brand";
 import {
   NAVYUG_EMAIL,
@@ -14,71 +14,41 @@ import {
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubmitted(true);
+  };
 
   return (
-    <footer className="relative bg-[#090909] pt-28 pb-10 border-t border-white/5 overflow-hidden text-[#8a8a8a]">
-      {/* Ambient Glow */}
+    <footer className="relative bg-[#090909] pt-20 pb-12 border-t border-white/5 text-[#8a8a8a] select-none">
+      {/* Subtle top ambient glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(185, 255, 102, 0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse at top, rgba(185, 255, 102, 0.05) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        {/* Top Hero Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-16">
-          <div className="max-w-2xl">
-            <h2 className="font-sans text-[clamp(28px,4vw,48px)] font-light text-[#f5f5f5] tracking-tight leading-[1.1] mb-6">
-              Building the Next Era of <br className="hidden sm:block" />
-              <span className="text-[#8a8a8a] italic font-serif">
-                Digital Businesses.
-              </span>
-            </h2>
-            <p className="font-sans text-[15px] leading-relaxed text-[#8a8a8a] max-w-lg">
-              {BRAND.name} is a premium digital product studio engineering
-              exceptional websites, AI solutions, SaaS platforms, and brand
-              experiences that drive measurable impact.
-            </p>
-          </div>
-
-          {/* Lead Generation CTA Box (Replacing Newsletter) */}
-          <div className="shrink-0 w-full md:w-auto flex flex-col gap-5 bg-white/[0.02] p-8 rounded-3xl border border-white/5 backdrop-blur-xs max-w-sm">
-            <h3 className="font-sans text-lg font-medium text-white leading-snug">
-              Let&apos;s build something remarkable.
-            </h3>
-            <p className="font-sans text-xs leading-relaxed text-[#8a8a8a]">
-              Tell us about your project and we&apos;ll get back within 24 hours.
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 font-mono text-[13px] tracking-wide font-semibold text-[#090909] bg-[#B9FF66] hover:bg-white transition-all rounded-full px-6 py-3 mt-1 hover:scale-[1.02] group w-fit cursor-pointer"
-            >
-              Start a Project
-              <span className="transition-transform duration-200 group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-          </div>
-        </div>
-
-        {/* Faint Horizontal Divider */}
-        <div className="w-full h-px bg-white/[0.06] mb-16" aria-hidden="true" />
-
-        {/* 4-Column Navigation Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-24">
+        {/* 5-Column Architectural Navigation Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_1fr_1.4fr] gap-x-12 lg:gap-x-16 gap-y-12 mb-20">
+          
           {/* Column 1: Services */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-1">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-2">
               Services
             </h4>
             <a
               href="#services"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              Web Platforms{" "}
+              Web Platforms
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -87,7 +57,7 @@ const Footer = () => {
               href="#services"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              SaaS Development{" "}
+              SaaS Development
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -96,7 +66,7 @@ const Footer = () => {
               href="#services"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              AI Automation{" "}
+              AI Automation
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -105,7 +75,7 @@ const Footer = () => {
               href="#services"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              Brand Identity{" "}
+              Brand Identity
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -113,15 +83,15 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Portfolio */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-1">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-2">
               Portfolio
             </h4>
             <a
               href="#work"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              Restaurant Website{" "}
+              Restaurant Website
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -130,35 +100,35 @@ const Footer = () => {
               href="#work"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              Gift Shop Website{" "}
+              Gift Shop Website
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
             </a>
             <span className="font-sans text-[14px] text-[#8a8a8a]/60 flex items-center gap-2">
-              Boutique Website{" "}
+              Boutique Website
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/5">
-                Coming Soon
+                Soon
               </span>
             </span>
             <span className="font-sans text-[14px] text-[#8a8a8a]/60 flex items-center gap-2">
-              Gym Website{" "}
+              Gym Website
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-white/40 border border-white/5">
-                Coming Soon
+                Soon
               </span>
             </span>
           </div>
 
           {/* Column 3: Company */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-1">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-2">
               Company
             </h4>
             <a
-              href="#services"
+              href="#process"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              About Us{" "}
+              Process
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -167,16 +137,7 @@ const Footer = () => {
               href="#process"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              Process{" "}
-              <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
-                ↗
-              </span>
-            </a>
-            <a
-              href="#process"
-              className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
-            >
-              How We Work{" "}
+              How We Work
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -185,7 +146,16 @@ const Footer = () => {
               href="#faq"
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
-              FAQ{" "}
+              FAQ
+              <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
+                ↗
+              </span>
+            </a>
+            <a
+              href="#contact"
+              className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
+            >
+              Contact
               <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                 ↗
               </span>
@@ -193,11 +163,11 @@ const Footer = () => {
           </div>
 
           {/* Column 4: Contact & Socials */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-1">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-mono text-[11px] tracking-tight uppercase text-white/40 mb-2">
               Contact &amp; Connect
             </h4>
-            <div className="flex flex-col gap-1 mb-2">
+            <div className="flex flex-col gap-1 mb-1">
               <a
                 href={`mailto:${NAVYUG_EMAIL}`}
                 className="font-mono text-[13px] text-white hover:text-[#B9FF66] transition-colors"
@@ -205,18 +175,18 @@ const Footer = () => {
                 {NAVYUG_EMAIL}
               </a>
               <span className="font-sans text-[11px] text-[#8a8a8a]/70">
-                Typically replies within 24 hours
+                Typically replies within 24h
               </span>
             </div>
 
-            <div className="flex flex-col gap-2.5 pt-2 border-t border-white/5">
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
               <Link
                 href={NAVYUG_X_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group font-sans text-[13px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
               >
-                Twitter / X{" "}
+                Twitter / X
                 <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                   ↗
                 </span>
@@ -227,7 +197,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group font-sans text-[13px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
               >
-                LinkedIn{" "}
+                LinkedIn
                 <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                   ↗
                 </span>
@@ -238,7 +208,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group font-sans text-[13px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
               >
-                Instagram{" "}
+                Instagram
                 <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                   ↗
                 </span>
@@ -249,65 +219,87 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="group font-sans text-[13px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
               >
-                GitHub{" "}
+                GitHub
                 <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
                   ↗
                 </span>
               </Link>
             </div>
           </div>
+
+          {/* Column 5: Stay Updated (Seamless 1.4fr Column) */}
+          <div className="flex flex-col gap-2">
+            <h4 className="font-sans text-sm font-semibold text-white mb-0.5">
+              Stay Updated
+            </h4>
+            <p className="font-sans text-xs leading-relaxed text-white/60 max-w-[340px]">
+              Product launches, design insights, and AI updates.
+            </p>
+
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="relative w-full max-w-[340px] mt-1 group/input">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="w-full h-[48px] bg-white/[0.03] border border-[rgba(185,255,102,0.18)] hover:border-[rgba(185,255,102,0.35)] focus:border-[#B9FF66] focus:shadow-[0_0_0_4px_rgba(185,255,102,0.12)] rounded-2xl px-4 text-xs text-white placeholder-white/55 focus:outline-none transition-all duration-200 pr-12 font-sans"
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe to Stay Updated"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl flex items-center justify-center text-[#B9FF66] hover:brightness-110 focus:outline-none group cursor-pointer"
+                >
+                  <span className="text-[20px] leading-none transition-all duration-200 group-hover/input:translate-x-1">
+                    →
+                  </span>
+                </button>
+              </form>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 max-w-[340px] mt-1"
+              >
+                <span className="block font-sans text-xs font-semibold text-white mb-0.5">
+                  Thanks.
+                </span>
+                <span className="block font-sans text-xs text-[#8a8a8a]">
+                  You&apos;ll hear from us occasionally.
+                </span>
+              </motion.div>
+            )}
+          </div>
+
         </div>
 
-        {/* Bottom Legal Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Logo & Location */}
-          <div className="flex items-center gap-5">
-            {/* 20-30% Larger Logo */}
-            <NavYugLogo variant="full" size={56} className="h-12 sm:h-14" />
-            <span className="font-sans text-[12px] text-[#8a8a8a] flex items-center gap-1.5">
-              <svg
-                className="w-3.5 h-3.5 text-[#B9FF66]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              Crafted with passion in India
-            </span>
+        {/* Modernized Bottom Bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-white/40 font-sans">
+          {/* Copyright & Location */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-center sm:text-left">
+            <span className="text-white/60 font-semibold">© {year} {BRAND.name}</span>
+            <span className="hidden sm:inline">•</span>
+            <span>Designed &amp; engineered in India.</span>
           </div>
 
           {/* Legal Links */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <span className="font-sans text-[12px] tracking-tight text-white/40">
-              © {year} {BRAND.name}. All rights reserved.
-            </span>
             <a
               href="#privacy"
-              className="font-sans text-[12px] text-white/40 hover:text-white tracking-tighter transition-colors"
+              className="hover:text-white transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="#terms"
-              className="font-sans text-[12px] text-white/40 hover:text-white tracking-tighter transition-colors"
+              className="hover:text-white transition-colors"
             >
               Terms &amp; Conditions
             </a>
             <a
               href="#cookies"
-              className="font-sans text-[12px] text-white/40 hover:text-white tracking-tighter transition-colors"
+              className="hover:text-white transition-colors"
             >
               Cookies
             </a>

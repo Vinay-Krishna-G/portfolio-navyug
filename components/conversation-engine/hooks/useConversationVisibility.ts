@@ -11,9 +11,11 @@ export function useConversationVisibility(targetRef: RefObject<HTMLElement | nul
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: "50px 0px" }
     );
 
     observer.observe(element);
