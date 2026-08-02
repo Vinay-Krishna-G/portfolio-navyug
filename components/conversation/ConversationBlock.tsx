@@ -13,15 +13,15 @@ const DELAYS = THINKING_MS || {
 
 interface ConversationBlockProps {
   block: ConversationBlockData;
-  isLast: boolean;
+  isLast?: boolean;
 }
 
-export default function ConversationBlock({ block, isLast }: ConversationBlockProps) {
+export default function ConversationBlock({ block }: ConversationBlockProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [showTyping, setShowTyping] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
-  const hasAnimatedRef = useRef(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   // Extract question & answer messages
   const questionMsg = block.messages.find((m) => m.sender === "client");
@@ -33,7 +33,7 @@ export default function ConversationBlock({ block, isLast }: ConversationBlockPr
   // IntersectionObserver for scroll-triggered sequence
   useEffect(() => {
     const el = containerRef.current;
-    if (!el || hasAnimatedRef.current) return;
+    if (!el || hasAnimated) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,13 +46,13 @@ export default function ConversationBlock({ block, isLast }: ConversationBlockPr
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [hasAnimated]);
 
   // Sequence controller (runs ONCE and preserves state)
   useEffect(() => {
-    if (!isInView || hasAnimatedRef.current) return;
+    if (!isInView || hasAnimated) return;
 
-    hasAnimatedRef.current = true;
+    const animTimer = setTimeout(() => setHasAnimated(true), 0);
 
     // Step 1: Question renders instantly when in view
     // Step 2: Typing indicator appears after 200ms
@@ -67,15 +67,16 @@ export default function ConversationBlock({ block, isLast }: ConversationBlockPr
     }, 200 + thinkingDuration);
 
     return () => {
+      clearTimeout(animTimer);
       clearTimeout(typingTimer);
       clearTimeout(answerTimer);
     };
-  }, [isInView, thinkingDuration]);
+  }, [isInView, hasAnimated, thinkingDuration]);
 
   return (
     <div ref={containerRef} className="w-full py-4 border-b border-black/5 last:border-b-0">
       {/* Client Question */}
-      {questionMsg && (hasAnimatedRef.current || isInView) && (
+      {questionMsg && (hasAnimated || isInView) && (
         <MessageBubble message={questionMsg} />
       )}
 

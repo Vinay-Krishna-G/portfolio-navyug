@@ -23,7 +23,10 @@ export function useConversationTimeline(
 
   const hasStartedRef = useRef(false);
   const messagesRef = useRef(messages);
-  messagesRef.current = messages;
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   useEffect(() => {
     if (!isVisible || hasStartedRef.current || messagesRef.current.length === 0) {

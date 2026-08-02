@@ -15,7 +15,9 @@ const SERVICE_CAPSULES = [
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   // Soft spring physics (Max 6px translation, Max 2° rotation)
   const springConfig = { stiffness: 120, damping: 20 };
@@ -26,7 +28,6 @@ export default function HeroSection() {
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(query.matches);
     const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
     query.addEventListener("change", handler);
     return () => query.removeEventListener("change", handler);

@@ -60,8 +60,8 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
   // Staggered start delay + 800ms initial entrance pause before auto-scrolling
   useEffect(() => {
     if (!isInView || isMobileOrReducedMotion) {
-      setIsReadyToScroll(false);
-      return;
+      const resetTimer = setTimeout(() => setIsReadyToScroll(false), 0);
+      return () => clearTimeout(resetTimer);
     }
 
     const staggerMs = (index % 3) * 1500 + 800; // 0.8s, 2.3s, 3.8s stagger
