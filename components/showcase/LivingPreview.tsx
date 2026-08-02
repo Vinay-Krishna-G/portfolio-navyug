@@ -104,31 +104,28 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="card-premium overflow-hidden relative cursor-pointer flex flex-col justify-between group rounded-[24px]"
+      className="card-premium overflow-hidden relative cursor-pointer flex flex-col justify-between group rounded-[24px] bg-white transition-all duration-500"
       style={{
+        borderColor: isHovered ? "rgba(185,255,102,0.4)" : "rgba(0,0,0,0.05)",
         boxShadow: isHovered
-          ? "0 2px 8px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06), 0 24px 64px rgba(0,0,0,.04)"
-          : "0 2px 8px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.04)",
+          ? "0 0 0 1px rgba(185,255,102,0.18), 0 16px 50px rgba(0,0,0,0.10)"
+          : "0 8px 30px rgba(0,0,0,0.05)",
       }}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
-      whileHover={{ y: -8 }}
+      transition={{ delay: index * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* ── Top Preview Window Container ── */}
-      <div className="relative h-[230px] sm:h-[250px] w-full overflow-hidden bg-neutral-900 mask-gradient-v">
-        {/* Parallax & Auto-Scrolling Content */}
+      <div className="relative h-[230px] sm:h-[250px] w-full overflow-hidden bg-white mask-gradient-v">
+        {/* Parallax, Auto-Scrolling & Subtle Image Zoom Content */}
         <motion.div
           style={{ x: mouseX, y: mouseY }}
           className="w-full"
-          animate={
-            shouldAnimate
-              ? {
-                y: ["0%", "-45%", "0%"],
-              }
-              : {}
-          }
+          animate={{
+            ...(shouldAnimate ? { y: ["0%", "-45%", "0%"] } : {}),
+            scale: isHovered ? 1.015 : 1,
+          }}
           transition={
             shouldAnimate
               ? {
@@ -137,44 +134,39 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
                 repeat: Infinity,
                 repeatType: "reverse",
               }
-              : { duration: 0.5 }
+              : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
           }
         >
           <PreviewLayout project={project} />
         </motion.div>
 
-        {/* ── Top Right: LIVE PREVIEW Badge ── */}
+        {/* ── Top Right: LIVE PREVIEW Badge (dims to 55% on hover) ── */}
         <div className="absolute top-3 right-3 z-20 pointer-events-none transition-opacity duration-300">
           <span
-            className={`inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md border transition-all duration-300 ${isHovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
-              }`}
-            style={{
-              background: "rgba(15, 15, 15, 0.75)",
-              color: "#B9FF66",
-              borderColor: "rgba(185, 255, 102, 0.3)",
-            }}
+            className={`inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-md border transition-all duration-300 ${
+              isHovered ? "opacity-55" : "opacity-100"
+            } bg-white/90 text-neutral-900 border-black/10 shadow-xs`}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B9FF66] animate-pulse" />
+            <span
+              className="w-1.5 h-1.5 rounded-full animate-pulse"
+              style={{ background: project.dotColor || "#86D227" }}
+            />
             LIVE PREVIEW
           </span>
         </div>
 
-        {/* ── Hover Overlay & CTA Button ── */}
+        {/* ── Hover CTA Button (No Dark Dimming) ── */}
         <motion.div
           className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none"
-          style={{
-            background: "linear-gradient(180deg, rgba(15,15,15,0.4) 0%, rgba(15,15,15,0.7) 100%)",
-            backdropFilter: "blur(3px)",
-          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.25 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.span
-            className="text-xs font-bold px-5 py-2.5 rounded-full shadow-lg border border-[#B9FF66]/40"
+            className="text-xs font-bold px-5 py-2.5 rounded-full shadow-lg border border-[#B9FF66]/50"
             style={{ background: "#B9FF66", color: "#0F0F0F" }}
-            animate={{ y: isHovered ? 0 : 12, opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
             Explore Experience →
           </motion.span>
@@ -182,13 +174,13 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
       </div>
 
       {/* ── Bottom Project Footer Info ── */}
-      <div className="p-5 bg-white dark:bg-neutral-900 border-t border-black/5 flex flex-col gap-3">
+      <div className="p-5 bg-white border-t border-black/5 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-base font-semibold leading-snug text-neutral-900 dark:text-neutral-100">
+            <h3 className="text-base font-bold leading-snug text-[#111111]">
               {project.name}
             </h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+            <p className="text-xs text-[#6B7280] mt-0.5 font-medium">
               {project.industry}
             </p>
           </div>
@@ -204,7 +196,7 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
           {project.features.map((feat) => (
             <span
               key={feat}
-              className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-black/5"
+              className="text-[10px] font-medium px-2.5 py-0.5 rounded-full bg-[#F5F5F5] text-[#444444] border border-black/5"
             >
               {feat}
             </span>

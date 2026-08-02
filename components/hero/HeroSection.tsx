@@ -1,175 +1,234 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useSpring } from "framer-motion";
+import NavYugLogo from "@/components/branding/NavYugLogo";
 
-const WORDS = ["Premium", "digital", "experiences."];
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.4 },
-  },
-};
-
-const wordVariants = {
-  hidden: { y: 80, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { type: "spring", stiffness: 70, damping: 16 },
-  },
-};
-
-const fadeUp = (delay = 0) => ({
-  hidden: { y: 28, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut", delay },
-  },
-});
-
-const TRUSTED_AVATARS = ["V", "R", "S", "A"];
+const SERVICE_CAPSULES = [
+  "Websites",
+  "AI Automation",
+  "SaaS",
+  "Branding",
+  "Enterprise",
+];
 
 export default function HeroSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  // Soft spring physics (Max 6px translation, Max 2° rotation)
+  const springConfig = { stiffness: 120, damping: 20 };
+  const mouseX = useSpring(0, springConfig);
+  const mouseY = useSpring(0, springConfig);
+  const rotateX = useSpring(0, springConfig);
+  const rotateY = useSpring(0, springConfig);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setIsReducedMotion(query.matches);
+    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+    query.addEventListener("change", handler);
+    return () => query.removeEventListener("change", handler);
+  }, []);
+
+  // Light-sliding cursor interaction
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || isReducedMotion) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const offsetX = ((e.clientX - centerX) / (rect.width / 2)) * 6; // max 6px
+    const offsetY = ((e.clientY - centerY) / (rect.height / 2)) * 6; // max 6px
+
+    const rotY = ((e.clientX - centerX) / (rect.width / 2)) * 2; // max 2deg
+    const rotX = -((e.clientY - centerY) / (rect.height / 2)) * 2; // max 2deg
+
+    mouseX.set(offsetX);
+    mouseY.set(offsetY);
+    rotateY.set(rotY);
+    rotateX.set(rotX);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    mouseX.set(0);
+    mouseY.set(0);
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
   return (
     <section
+      ref={containerRef}
       id="hero"
-      className="relative flex flex-col justify-center overflow-hidden"
-      style={{
-        background: "var(--ny-bg)",
-        minHeight: "100svh",
-        paddingTop: "9rem",
-        paddingBottom: "7rem",
-      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative flex flex-col justify-center overflow-hidden min-h-[90svh] lg:min-h-screen pt-32 pb-20 select-none"
+      style={{ background: "var(--ny-bg)" }}
       aria-label="Hero"
     >
-      {/* Very subtle dot grid */}
+      {/* Subtle ambient glow top right */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute top-[-100px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Soft ambient glow — top right */}
-      <div
-        className="absolute top-0 right-0 w-[640px] h-[640px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(185,255,102,0.07) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(185,255,102,0.06) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
 
       <div className="container-xl relative z-10">
-        {/* Trusted bar */}
-        <motion.div
-          variants={fadeUp(0.2)}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center gap-4 mb-12"
-        >
-          {/* Avatar stack */}
-          <div className="flex -space-x-2">
-            {TRUSTED_AVATARS.map((letter, i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold ring-2"
-                style={{
-                  background: i % 2 === 0 ? "var(--ny-foreground)" : "var(--ny-surface-3)",
-                  color: i % 2 === 0 ? "var(--ny-bg)" : "var(--ny-muted)",
-                  outline: "2px solid var(--ny-bg)",
-                  outlineOffset: "1px",
-                }}
-              >
-                {letter}
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm" style={{ color: "var(--ny-muted)" }}>
-              Trusted by 50+ businesses
-            </span>
-            <span className="dot-divider" />
-            <span className="badge-lime">
-              <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70" aria-hidden="true" />
-              AI-powered
-            </span>
-          </div>
-        </motion.div>
-
-        {/* Headline */}
-        <h1 className="mb-8 overflow-hidden" aria-label="Websites that people remember.">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* ── Left Column (42% width / 6 cols on lg) ── */}
           <motion.div
-            className="font-display font-bold leading-[1.02] tracking-tight"
-            style={{
-              fontSize: "clamp(3rem, 8vw, 7rem)",
-              color: "var(--ny-foreground)",
-            }}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+            className="lg:col-span-6 flex flex-col items-start text-left"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="overflow-hidden">
-              <motion.span className="block" variants={wordVariants}>
-                Websites that
-              </motion.span>
+            {/* Headline */}
+            <h1 className="font-display font-bold text-[#0F0F0F] tracking-tight leading-[1.05] text-[clamp(2.75rem,5.5vw,5.25rem)] mb-6 max-w-[580px]">
+              We build <span className="text-[#0F0F0F]">digital products</span> that grow businesses.
+            </h1>
+
+            {/* Supporting Copy */}
+            <p className="text-base sm:text-lg text-[#6B7280] font-normal leading-relaxed mb-8 max-w-[520px]">
+              Premium websites, AI automation, and scalable software engineered for ambitious businesses.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <a
+                href="#contact"
+                className="btn-primary text-sm font-bold px-7 py-3.5 rounded-full shadow-md transition-all duration-300 hover:shadow-lg hover:brightness-105 cursor-pointer"
+                style={{ background: "#B9FF66", color: "#0F0F0F" }}
+              >
+                Start Your Project →
+              </a>
+              <a
+                href="#work"
+                className="text-sm font-semibold px-7 py-3.5 rounded-full bg-white/80 border border-black/10 text-neutral-900 shadow-xs hover:bg-white transition-all duration-300 cursor-pointer"
+              >
+                View Our Work
+              </a>
             </div>
-            {WORDS.map((word, i) => (
-              <div key={i} className="overflow-hidden">
-                <motion.span
-                  className="block"
-                  variants={wordVariants}
-                  style={word === "experiences." ? { color: "var(--ny-muted)" } : {}}
+
+            {/* Liquid Glass Service Capsules */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              {SERVICE_CAPSULES.map((capsule) => (
+                <span
+                  key={capsule}
+                  className="text-xs font-medium px-4 py-2 rounded-full transition-all duration-300"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.72)",
+                    backdropFilter: "blur(14px)",
+                    WebkitBackdropFilter: "blur(14px)",
+                    border: "1px solid rgba(255, 255, 255, 0.85)",
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.04)",
+                    color: "#262626",
+                  }}
                 >
-                  {word}
-                </motion.span>
-              </div>
-            ))}
+                  {capsule}
+                </span>
+              ))}
+            </div>
           </motion.div>
-        </h1>
 
-        {/* Sub-copy */}
-        <motion.p
-          className="text-lg sm:text-xl max-w-lg leading-relaxed mb-12"
-          style={{ color: "var(--ny-muted)", fontWeight: 400 }}
-          variants={fadeUp(0.95)}
-          initial="hidden"
-          animate="visible"
-        >
-          NavYug builds modern websites and AI-powered digital products for
-          ambitious businesses. We take fewer clients and deliver more.
-        </motion.p>
+          {/* ── Right Column (58% width / 6 cols on lg) ── */}
+          <motion.div
+            className="lg:col-span-6 flex justify-center lg:justify-end"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            onMouseEnter={() => setIsHovered(true)}
+          >
+            {/* Single Architectural Liquid Glass Focal Object */}
+            <motion.div
+              className="w-full max-w-[540px] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between relative transition-shadow duration-500"
+              style={{
+                x: mouseX,
+                y: mouseY,
+                rotateX: rotateX,
+                rotateY: rotateY,
+                background: "rgba(255, 255, 255, 0.70)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.92)",
+                boxShadow: isHovered
+                  ? "0 24px 72px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(185, 255, 102, 0.25)"
+                  : "0 20px 60px rgba(0, 0, 0, 0.06)",
+              }}
+            >
+              {/* Top Glass Header Bar */}
+              <div className="flex items-center justify-between pb-6 border-b border-black/5">
+                <div className="flex items-center gap-3">
+                  <NavYugLogo variant="mark" size={24} />
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-neutral-900 font-display">
+                      NavYug Digital Engine
+                    </span>
+                    <span className="text-[10px] text-neutral-500 font-mono">
+                      v2026.4 • Architecture Overview
+                    </span>
+                  </div>
+                </div>
 
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-wrap gap-4"
-          variants={fadeUp(1.1)}
-          initial="hidden"
-          animate="visible"
-        >
-          <a href="#work" className="btn-primary">
-            See Our Work
-          </a>
-          <a href="#contact" className="btn-outline">
-            Start a Project →
-          </a>
-        </motion.div>
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#F8FFF1] border border-[rgba(185,255,102,0.3)] text-[#4F7A17]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#86D227] animate-pulse" />
+                  Active Build
+                </span>
+              </div>
 
-        {/* Scroll nudge */}
-        <motion.div
-          className="flex items-center gap-3 mt-24"
-          variants={fadeUp(1.4)}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="w-8 h-px" style={{ background: "var(--ny-dim)" }} aria-hidden="true" />
-          <p className="text-xs tracking-widest uppercase" style={{ color: "var(--ny-dim)" }}>
-            Scroll to explore
-          </p>
-        </motion.div>
+              {/* Middle Architectural Content Preview Surface */}
+              <div className="my-6 p-6 rounded-2xl bg-white/80 border border-black/5 shadow-xs flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-neutral-600 font-medium">
+                    System Architecture
+                  </span>
+                  <span className="text-[10px] font-mono text-[#5F8E1E] font-semibold">
+                    100% Bespoke Code
+                  </span>
+                </div>
+
+                {/* Minimalist Interface Representation Rules */}
+                <div className="space-y-2.5">
+                  <div className="h-2 w-3/4 rounded-full bg-neutral-200/80" />
+                  <div className="h-2 w-1/2 rounded-full bg-neutral-100" />
+                  <div className="h-2 w-5/6 rounded-full bg-neutral-100" />
+                </div>
+
+                {/* Architecture Metric Pills */}
+                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-black/5 text-center">
+                  <div className="p-2 rounded-xl bg-neutral-50 border border-black/5">
+                    <span className="block text-[10px] font-mono text-neutral-400 uppercase">Performance</span>
+                    <span className="text-xs font-bold text-neutral-900 font-mono">99 / 100</span>
+                  </div>
+                  <div className="p-2 rounded-xl bg-neutral-50 border border-black/5">
+                    <span className="block text-[10px] font-mono text-neutral-400 uppercase">Delivery</span>
+                    <span className="text-xs font-bold text-neutral-900 font-mono">3–5 Wks</span>
+                  </div>
+                  <div className="p-2 rounded-xl bg-[#F8FFF1] border border-[rgba(185,255,102,0.25)]">
+                    <span className="block text-[10px] font-mono text-[#5F8E1E] uppercase">Security</span>
+                    <span className="text-xs font-bold text-[#4F7A17] font-mono">Enterprise</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Architectural Summary Bar */}
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between">
+                <span className="text-[11px] text-neutral-500 font-sans">
+                  Built with Next.js, TypeScript &amp; Custom Motion
+                </span>
+                <span className="text-xs font-bold text-neutral-900 font-mono">
+                  NavYug Studio
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

@@ -22,22 +22,23 @@ export function useConversationTimeline(
   const [status, setStatus] = useState<EngineStatus>("idle");
 
   const hasStartedRef = useRef(false);
-  const isCancelledRef = useRef(false);
+  const messagesRef = useRef(messages);
+  messagesRef.current = messages;
 
   useEffect(() => {
-    if (!isVisible || hasStartedRef.current || messages.length === 0) {
+    if (!isVisible || hasStartedRef.current || messagesRef.current.length === 0) {
       return;
     }
 
     hasStartedRef.current = true;
-    isCancelledRef.current = false;
+    let isCancelled = false;
 
     const runTimeline = async () => {
       setStatus("waiting");
       await wait(TIMELINE.initialPause);
 
-      for (const msg of messages) {
-        if (isCancelledRef.current) break;
+      for (const msg of messagesRef.current) {
+        if (isCancelled) break;
 
         if (msg.type === "typing") {
           setActiveTypingId(msg.id);
@@ -56,15 +57,17 @@ export function useConversationTimeline(
         }
       }
 
-      setStatus("finished");
+      if (!isCancelled) {
+        setStatus("finished");
+      }
     };
 
     runTimeline();
 
     return () => {
-      isCancelledRef.current = true;
+      isCancelled = true;
     };
-  }, [isVisible, messages]);
+  }, [isVisible]);
 
   return { visibleIds, visibleLookup, activeTypingId, status };
 }
