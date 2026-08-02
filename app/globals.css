@@ -274,3 +274,11 @@
   background: var(--ny-dim);
   display: inline-block;
 }
+
+/* ─── Hide Next.js Dev Indicator Overlay ─────────────────── */
+nextjs-portal,
+#nextjs__container,
+[data-nextjs-toast] {
+  display: none !important;
+}
+

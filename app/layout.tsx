@@ -22,6 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BRAND.websiteUrl),
   title: `${BRAND.name} — ${BRAND.tagline}`,
   description: `${BRAND.name} crafts modern websites and AI-powered digital products for ambitious businesses. ${BRAND.subhead}`,
   keywords: ["web design", "web development", "AI websites", "agency", "NavYug", "digital agency"],

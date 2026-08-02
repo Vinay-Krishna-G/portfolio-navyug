@@ -67,7 +67,7 @@ export default function StatsSection() {
           }}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-black/5">
-            {STATS.map((item, i) => (
+            {STATS.map((item) => (
               <div
                 key={item.title}
                 className="p-6 lg:p-7 flex flex-col justify-between gap-4 group transition-colors hover:bg-white/40"

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import NavYugLogo from "@/components/branding/NavYugLogo";
-import { BRAND } from "@/lib/brand";
 
 export default function NotFound() {
   return (
