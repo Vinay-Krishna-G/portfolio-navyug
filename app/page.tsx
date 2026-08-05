@@ -1,7 +1,7 @@
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import Navbar from "@/components/navbar/Navbar";
 import HeroSection from "@/components/hero/HeroSection";
-import StatsSection from "@/components/stats/StatsSection";
+import TrustSection from "@/components/trust/TrustSection";
 import ServicesSection from "@/components/services/ServicesSection";
 import ShowcaseSection from "@/components/showcase/ShowcaseSection";
 import ProcessSection from "@/components/process/ProcessSection";
@@ -16,7 +16,7 @@ export default function Home() {
       <LoadingScreen />
       <Navbar />
       <HeroSection />
-      <StatsSection />
+      <TrustSection />
       <ServicesSection />
       <ShowcaseSection />
       <ProcessSection />

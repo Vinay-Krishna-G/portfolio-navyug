@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import FloatingWorkOrbit from "./FloatingWorkOrbit";
 
 const SERVICE_PILLS = [
   "Web Design",
@@ -12,16 +13,22 @@ const SERVICE_PILLS = [
 ];
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen pt-32 pb-28 sm:pb-32 select-none"
       style={{ background: "var(--ny-bg)" }}
       aria-label="Hero"
     >
+      {/* Floating Real Work Showcase Orbit Cards */}
+      <FloatingWorkOrbit />
+
       {/* Subtle top ambient glow */}
       <div
-        className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full pointer-events-none z-0"
         style={{
           background: "radial-gradient(circle, rgba(185,255,102,0.05) 0%, transparent 70%)",
         }}

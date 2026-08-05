@@ -1,161 +1,133 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import {
-  HiOutlineGlobeAlt,
-  HiOutlineCpuChip,
-  HiOutlineSparkles,
-  HiOutlineShoppingBag,
-  HiOutlineChartBar,
-  HiOutlineLifebuoy,
-} from "react-icons/hi2";
+  WebDesignAnim,
+  AiAutomationAnim,
+  BrandIdentityAnim,
+  EcommerceAnim,
+  SeoPerformanceAnim,
+  OngoingSupportAnim,
+} from "./ServiceAnimations";
 
 const SERVICES = [
   {
-    icon: HiOutlineGlobeAlt,
     title: "Web Design & Development",
     description:
-      "Custom-built websites that are fast, responsive, and crafted to convert visitors into customers.",
-    tint: "var(--ny-tint-lime)",
-    iconBg: "var(--ny-icon-lime)",
-    iconColor: "#3a7a00",
-    badge: "Core",
+      "Custom-built websites engineered for high performance, smooth responsiveness, and maximum conversions.",
+    Animation: WebDesignAnim,
+    badge: "CORE",
   },
   {
-    icon: HiOutlineCpuChip,
     title: "AI-Powered Features",
     description:
-      "Chatbots, intelligent search, automation, and AI-driven content built directly into your product.",
-    tint: "var(--ny-tint-blue)",
-    iconBg: "var(--ny-icon-blue)",
-    iconColor: "#1a5fa8",
-    badge: "New",
+      "Intelligent chatbots, AI search, workflow automation, and custom LLM integrations built directly into your product.",
+    Animation: AiAutomationAnim,
+    badge: "AI FEATURE",
   },
   {
-    icon: HiOutlineSparkles,
     title: "Brand Identity",
     description:
-      "Logos, typography, and visual systems that give your business a consistent, premium presence.",
-    tint: "var(--ny-tint-purple)",
-    iconBg: "var(--ny-icon-purple)",
-    iconColor: "#5b21b6",
+      "Logos, typography systems, and visual design languages that position your business as an industry leader.",
+    Animation: BrandIdentityAnim,
     badge: null,
   },
   {
-    icon: HiOutlineShoppingBag,
     title: "E-Commerce",
     description:
-      "Scalable online stores built for performance — Shopify, custom builds, or headless commerce.",
-    tint: "var(--ny-tint-amber)",
-    iconBg: "var(--ny-icon-amber)",
-    iconColor: "#92400e",
+      "Scalable online storefronts engineered for fast checkout, custom product builders, and global growth.",
+    Animation: EcommerceAnim,
     badge: null,
   },
   {
-    icon: HiOutlineChartBar,
     title: "SEO & Performance",
     description:
-      "Technical SEO, Core Web Vitals optimisation, and structured data so you rank and load fast.",
-    tint: "var(--ny-tint-teal)",
-    iconBg: "var(--ny-icon-teal)",
-    iconColor: "#065f46",
+      "Technical Core Web Vitals optimization, structured data, and search architecture so you load fast and rank #1.",
+    Animation: SeoPerformanceAnim,
     badge: null,
   },
   {
-    icon: HiOutlineLifebuoy,
     title: "Ongoing Support",
     description:
-      "We don't disappear after launch. Dedicated maintenance, updates, and growth support.",
-    tint: "var(--ny-tint-rose)",
-    iconBg: "var(--ny-icon-rose)",
-    iconColor: "#9f1239",
+      "Continuous optimization, security updates, feature scaling, and dedicated technical growth partnership post-launch.",
+    Animation: OngoingSupportAnim,
     badge: null,
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="section-padding" style={{ background: "var(--ny-bg)" }} aria-label="Services">
-      <div className="container-xl">
-        {/* Header */}
+    <section
+      id="services"
+      className="py-24 sm:py-32 select-none"
+      style={{ background: "var(--ny-bg)" }}
+      aria-label="Services"
+    >
+      <div className="container-xl max-w-[1240px] mx-auto px-4 sm:px-6">
+        
+        {/* Section Header */}
         <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 28 }}
+          className="mb-16 sm:mb-20 text-center max-w-[620px] mx-auto"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="section-label">What We Do</span>
-          <h2
-            className="font-display font-bold leading-tight"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--ny-foreground)", maxWidth: "28rem" }}
-          >
-            Everything your business needs online
+          <span className="text-xs font-mono uppercase tracking-widest text-[#686B72] bg-white border border-[#E8E8E2] px-3.5 py-1 rounded-full shadow-2xs">
+            WHAT WE DO
+          </span>
+          <h2 className="font-display font-extrabold tracking-tight leading-[1.1] text-3xl sm:text-5xl text-[#111111] mt-5 mb-4">
+            Everything your business needs online.
           </h2>
+          <p className="text-base sm:text-lg text-[#686B72] font-normal leading-relaxed">
+            Craftsmanship, engineering precision, and AI intelligence built into every product we ship.
+          </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Product-Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service, i) => (
             <motion.article
               key={service.title}
-              className="relative rounded-2xl p-8 flex flex-col gap-6 overflow-hidden"
-              style={{
-                background: service.tint,
-                border: "1px solid rgba(0,0,0,0.06)",
-                boxShadow: "var(--ny-shadow-sm)",
-              }}
+              className="group relative rounded-3xl bg-white border border-[#E8E8E2] p-7 sm:p-8 flex flex-col justify-between overflow-hidden shadow-layered transition-all duration-300 hover:shadow-2xl hover:border-[#B9FF66]/60 cursor-pointer"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: i * 0.08, duration: 0.45, ease: "easeOut" }}
-              whileHover={{
-                y: -4,
-                boxShadow: "0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)",
-                transition: { duration: 0.2 },
-              }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
             >
               {/* Badge */}
               {service.badge && (
-                <span
-                  className="absolute top-5 right-5 text-xs font-semibold px-2.5 py-1 rounded-full"
-                  style={{
-                    background: "rgba(255,255,255,0.7)",
-                    color: "var(--ny-muted)",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
+                <span className="absolute top-6 right-6 text-[9px] font-mono font-bold tracking-wider text-[#0F0F0F] bg-[#B9FF66] px-2.5 py-0.5 rounded-full shadow-xs">
                   {service.badge}
                 </span>
               )}
 
-              {/* Icon */}
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ background: service.iconBg }}
-              >
-                <service.icon
-                  className="w-6 h-6"
-                  style={{ color: service.iconColor }}
-                  aria-hidden="true"
-                />
+              {/* Top Vector Animation Frame */}
+              <div className="w-full h-32 mb-6 rounded-2xl bg-[#FAFAF8] border border-[#E8E8E2]/70 flex items-center justify-center transition-colors duration-300 group-hover:bg-neutral-900/5">
+                <service.Animation />
               </div>
 
               {/* Content */}
               <div>
-                <h3
-                  className="text-base font-semibold mb-2.5 leading-snug"
-                  style={{ color: "var(--ny-foreground)" }}
-                >
+                <h3 className="text-lg font-bold text-[#111111] mb-2.5 leading-snug group-hover:text-black">
                   {service.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--ny-muted)" }}>
+                <p className="text-sm text-[#686B72] leading-relaxed font-normal">
                   {service.description}
                 </p>
+              </div>
+
+              {/* Bottom Learn More Link */}
+              <div className="mt-6 pt-4 border-t border-[#E8E8E2]/60 flex items-center justify-between text-xs font-semibold text-[#111111] group-hover:text-black">
+                <span>Learn More</span>
+                <span className="text-base transition-transform duration-300 group-hover:translate-x-1">→</span>
               </div>
             </motion.article>
           ))}
         </div>
+
       </div>
     </section>
   );

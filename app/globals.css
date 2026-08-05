@@ -2,37 +2,47 @@
 
 @plugin "tailwindcss-animate";
 
-/* ─── NavYug Design Tokens — Light Mode ─────────────────── */
+/* ─── NavYug Unified Design System Tokens — Apple / Linear / Vercel Grade ─── */
 :root {
   /* Backgrounds */
-  --ny-bg:          #FAFAFA;
-  --ny-bg-2:        #F4F4F4;
-  --ny-surface:     #FFFFFF;
-  --ny-surface-2:   #F8F8F8;
-  --ny-surface-3:   #F0F0F0;
+  --ny-bg:            #FAFAF8;
+  --ny-surface:       #FFFFFF;
+  --ny-surface-muted: #F6F6F3;
 
   /* Text */
-  --ny-foreground:  #0F0F0F;
-  --ny-muted:       #6B6B6B;
-  --ny-dim:         #A0A0A0;
+  --ny-text:          #111111;
+  --ny-foreground:    #111111;
+  --ny-muted:         #686B72;
+  --ny-dim:           #9E9EA5;
 
-  /* NavYug accent — silver/pearl identity */
-  --ny-accent:      #D4D4D4;
-  --ny-accent-fg:   #0F0F0F;
+  /* Accent — NavYug Signature Lime */
+  --ny-accent:        #B9FF66;
+  --ny-accent-fg:     #0F0F0F;
+  --ny-lime:          #B9FF66;
+  --ny-lime-hover:    #C8FF7C;
+  --ny-lime-dim:      rgba(185, 255, 102, 0.15);
 
-  /* Lime — used sparingly: CTA, AI badge, hover accent */
-  --ny-lime:        #B9FF66;
-  --ny-lime-dim:    rgba(185, 255, 102, 0.15);
+  /* Unified Border Token */
+  --ny-border:        #E7E7E3;
+  --ny-border-lg:     #DCDCD4;
 
-  /* Borders */
-  --ny-border:      rgba(0, 0, 0, 0.07);
-  --ny-border-lg:   rgba(0, 0, 0, 0.12);
+  /* Soft Natural Shadows (Tilted from #111111) */
+  --shadow-sm:        0 2px 10px rgba(17,17,17,.04);
+  --shadow-md:        0 8px 30px rgba(17,17,17,.06);
+  --shadow-lg:        0 20px 60px rgba(17,17,17,.08);
 
-  /* Shadows */
-  --ny-shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --ny-shadow-md:   0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
-  --ny-shadow-lg:   0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-  --ny-shadow-xl:   0 24px 64px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06);
+  /* Formalized Radius Rules */
+  --radius-button:    9999px;
+  --radius-card:      24px;
+  --radius-browser:   20px;
+  --radius-viewport:  18px;
+  --radius-terminal:  16px;
+
+  /* Motion Tokens */
+  --ease-standard:    cubic-bezier(.22,1,.36,1);
+  --duration-fast:    180ms;
+  --duration-normal:  280ms;
+  --duration-slow:    600ms;
 
   /* Service card tints */
   --ny-tint-lime:   rgba(185, 255, 102, 0.10);
