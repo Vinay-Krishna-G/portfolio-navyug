@@ -17,8 +17,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <TrustSection />
-      <ServicesSection />
       <ShowcaseSection />
+      <ServicesSection />
       <ProcessSection />
       <WhyNavyugSection />
       <ConversationEngine />
