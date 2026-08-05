@@ -8,8 +8,8 @@ import { PROJECTS } from "@/data/projects";
 const MAISON_BISTRO_SCREENS = [
   "/portfolio/restaurant/screenshots/01-home.webp",
   "/portfolio/restaurant/screenshots/02-services.webp",
-  "/portfolio/restaurant/screenshots/03-booking.webp",
-  "/portfolio/restaurant/screenshots/04-reviews.webp",
+  "/portfolio/restaurant/screenshots/03-gallery.webp",
+  "/portfolio/restaurant/screenshots/04-contact.webp",
 ];
 
 const DELIVERABLES_MAP: Record<string, string[]> = {
