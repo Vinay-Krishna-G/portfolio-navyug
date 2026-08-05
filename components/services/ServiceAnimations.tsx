@@ -1,236 +1,218 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 
-/**
- * Animated SVG Micro-Illustrations for NavYug Service Cards
- * Apple / Linear / Vercel Grade Animated Vectors (88x88 viewBox)
- */
+const INK = "#0B1020";
+const PANEL = "#161B2A";
+const LINE = "#3B4356";
+const MUTED = "#778096";
+const SIGNAL = "#FF6B5E";
+
+function DeviceFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <svg width="112" height="112" viewBox="0 0 112 112" fill="none" aria-hidden="true">
+      <rect x="8" y="8" width="96" height="96" rx="20" fill="#F1F3F8" />
+      <rect x="17" y="17" width="78" height="78" rx="14" fill={PANEL} />
+      <path d="M31 25H81" stroke="#525B70" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="25" cy="25" r="2" fill={SIGNAL} />
+      {children}
+    </svg>
+  );
+}
+
+function SignalDot({ cx, cy, delay = 0 }: { cx: number; cy: number; delay?: number }) {
+  return (
+    <motion.circle
+      cx={cx}
+      cy={cy}
+      r="3"
+      fill={SIGNAL}
+      animate={{ opacity: [0.25, 1, 0.25], scale: [0.75, 1.15, 0.75] }}
+      transition={{ duration: 1.8, delay, repeat: Infinity, ease: "easeInOut" }}
+    />
+  );
+}
 
 export function WebDesignAnim() {
   return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Outer Browser Frame */}
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#18181B" stroke="#27272A" strokeWidth="1.5" />
-      {/* Chrome Traffic Dots */}
-      <circle cx="16" cy="23" r="2" fill="#EF4444" opacity="0.8" />
-      <circle cx="23" cy="23" r="2" fill="#F59E0B" opacity="0.8" />
-      <circle cx="30" cy="23" r="2" fill="#10B981" opacity="0.8" />
-      {/* URL Pill */}
-      <rect x="38" y="20" width="36" height="6" rx="3" fill="#27272A" />
-
-      {/* Hero Animated Wireframe Lines */}
+    <DeviceFrame>
+      <rect x="28" y="37" width="29" height="4" rx="2" fill="#F7F8FC" />
+      <rect x="28" y="46" width="20" height="3" rx="1.5" fill={MUTED} />
+      <rect x="28" y="53" width="25" height="3" rx="1.5" fill={LINE} />
       <motion.rect
-        x="14"
-        y="34"
-        width="34"
-        height="6"
-        rx="3"
-        fill="#FF6B5E"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+        x="63"
+        y="37"
+        width="19"
+        height="33"
+        rx="5"
+        fill="#252C3D"
+        stroke="#596278"
+        animate={{ y: [37, 33, 37] }}
+        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <rect x="14" y="44" width="46" height="4" rx="2" fill="#52525B" />
-      <rect x="14" y="52" width="28" height="4" rx="2" fill="#3F3F46" />
-
-      {/* Animated Hero Card */}
       <motion.rect
-        x="52"
-        y="34"
-        width="22"
-        height="28"
-        rx="6"
-        fill="#27272A"
-        stroke="#3F3F46"
-        strokeWidth="1"
-        animate={{ y: [34, 31, 34] }}
-        transition={{ duration: 3.0, repeat: Infinity, ease: "easeInOut" }}
+        x="67"
+        y="42"
+        width="11"
+        height="11"
+        rx="2"
+        fill={SIGNAL}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <circle cx="63" cy="48" r="5" fill="#FF6B5E" opacity="0.8" />
-    </svg>
+      <path d="M28 78H84" stroke="#40495E" strokeWidth="2" strokeLinecap="round" />
+      <SignalDot cx={35} cy={78} />
+      <SignalDot cx={44} cy={78} delay={0.2} />
+      <SignalDot cx={53} cy={78} delay={0.4} />
+    </DeviceFrame>
   );
 }
 
 export function AiAutomationAnim() {
   return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Outer Card Base */}
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#090D16" stroke="#1E293B" strokeWidth="1.5" />
-
-      {/* Connecting Network Lines */}
+    <DeviceFrame>
       <motion.path
-        d="M24 44 L44 26 L64 44 L44 62 Z"
-        stroke="#334155"
+        d="M36 66V56L56 44L76 56V66L56 78L36 66Z"
+        stroke="#657089"
         strokeWidth="1.5"
-        strokeDasharray="3 3"
-        animate={{ strokeDashoffset: [0, -12] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+        strokeDasharray="3 4"
+        animate={{ strokeDashoffset: [0, -21] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
       />
-      
-      {/* Active Beams */}
-      <line x1="24" y1="44" x2="44" y2="26" stroke="#FF6B5E" strokeWidth="1.5" opacity="0.7" />
-      <line x1="44" y1="26" x2="64" y2="44" stroke="#38BDF8" strokeWidth="1.5" opacity="0.7" />
-
-      {/* Pulsing Nodes */}
-      <circle cx="24" cy="44" r="4" fill="#38BDF8" />
-      <circle cx="64" cy="44" r="4" fill="#38BDF8" />
-      <circle cx="44" cy="26" r="4" fill="#38BDF8" />
-      <circle cx="44" cy="62" r="4" fill="#38BDF8" />
-
-      {/* Core Glowing Node */}
+      <circle cx="56" cy="44" r="6" fill={SIGNAL} />
+      <circle cx="36" cy="56" r="4" fill="#DDE2EC" />
+      <circle cx="76" cy="56" r="4" fill="#DDE2EC" />
+      <circle cx="56" cy="78" r="4" fill="#DDE2EC" />
       <motion.circle
-        cx="44"
-        cy="44"
-        r="7"
-        fill="#FF6B5E"
-        animate={{ scale: [1, 1.25, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut" }}
+        cx="56"
+        cy="61"
+        r="8"
+        fill="#F7F8FC"
+        animate={{ scale: [0.72, 1.08, 0.72], opacity: [0.45, 1, 0.45] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       />
-    </svg>
+      <circle cx="56" cy="61" r="3" fill={INK} />
+    </DeviceFrame>
   );
 }
 
 export function BrandIdentityAnim() {
   return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#18181B" stroke="#27272A" strokeWidth="1.5" />
-
-      {/* Morphing Geometric Logo Shapes */}
+    <DeviceFrame>
+      <motion.g
+        animate={{ rotate: [0, 90, 180, 270, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        style={{ transformOrigin: "56px 58px" }}
+      >
+        <rect x="39" y="41" width="17" height="17" rx="4" fill={SIGNAL} />
+        <rect x="58" y="41" width="17" height="17" rx="4" fill="#EDF0F6" />
+        <rect x="39" y="60" width="17" height="17" rx="4" fill="#EDF0F6" />
+        <rect x="58" y="60" width="17" height="17" rx="4" fill="#596278" />
+      </motion.g>
       <motion.rect
-        x="24"
-        y="28"
-        width="22"
-        height="22"
-        rx="6"
-        fill="#FF6B5E"
-        animate={{ rotate: [0, 90, 0], scale: [1, 0.9, 1] }}
-        transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut" }}
+        x="28"
+        y="82"
+        width="56"
+        height="2"
+        rx="1"
+        fill={SIGNAL}
+        animate={{ scaleX: [0.25, 1, 0.25], originX: [0, 0.5, 1] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.circle
-        cx="58"
-        cy="39"
-        r="11"
-        fill="#3F3F46"
-        stroke="#FF6B5E"
-        strokeWidth="1.5"
-        animate={{ scale: [0.9, 1.1, 0.9] }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.path
-        d="M 30 58 L 58 58 L 44 46 Z"
-        fill="#52525B"
-        animate={{ y: [0, -2, 0] }}
-        transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </svg>
+    </DeviceFrame>
   );
 }
 
 export function EcommerceAnim() {
   return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#18181B" stroke="#27272A" strokeWidth="1.5" />
-
-      {/* Product Cards Slider */}
+    <DeviceFrame>
       <motion.g
         animate={{ x: [0, -18, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <rect x="16" y="24" width="24" height="32" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
-        <rect x="20" y="28" width="16" height="14" rx="4" fill="#E8B5A3" />
-        <rect x="20" y="46" width="16" height="3" rx="1.5" fill="#A1A1AA" />
-
-        <rect x="46" y="24" width="24" height="32" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
-        <rect x="50" y="28" width="16" height="14" rx="4" fill="#FF6B5E" />
-        <rect x="50" y="46" width="16" height="3" rx="1.5" fill="#A1A1AA" />
-
-        <rect x="76" y="24" width="24" height="32" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
+        {[0, 1, 2].map((index) => (
+          <g key={index} transform={`translate(${25 + index * 25} 39)`}>
+            <rect width="20" height="27" rx="4" fill="#262D3E" stroke="#586176" />
+            <rect x="4" y="4" width="12" height="11" rx="2" fill={index === 1 ? SIGNAL : "#DEE3ED"} />
+            <rect x="4" y="19" width="12" height="2" rx="1" fill={MUTED} />
+          </g>
+        ))}
       </motion.g>
-
-      {/* Cart Badge */}
-      <rect x="16" y="60" width="56" height="8" rx="4" fill="#27272A" />
-      <circle cx="64" cy="64" r="5" fill="#FF6B5E" />
-    </svg>
+      <rect x="27" y="76" width="58" height="2" rx="1" fill="#4B5469" />
+      <motion.circle
+        cx="79"
+        cy="77"
+        r="5"
+        fill={SIGNAL}
+        animate={{ scale: [1, 1.22, 1] }}
+        transition={{ duration: 1.7, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </DeviceFrame>
   );
 }
 
 export function SeoPerformanceAnim() {
-  return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#18181B" stroke="#27272A" strokeWidth="1.5" />
+  const bars = [
+    { x: 31, height: 17, delay: 0 },
+    { x: 44, height: 28, delay: 0.16 },
+    { x: 57, height: 39, delay: 0.32 },
+    { x: 70, height: 50, delay: 0.48 },
+  ];
 
-      {/* Rising Metric Bars */}
-      <motion.rect
-        x="18"
-        y="50"
-        width="10"
-        height="18"
-        rx="3"
-        fill="#3F3F46"
-        animate={{ height: [12, 18, 12], y: [56, 50, 56] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+  return (
+    <DeviceFrame>
+      <path d="M27 79H84" stroke="#586176" strokeWidth="2" strokeLinecap="round" />
+      {bars.map((bar, index) => (
+        <motion.rect
+          key={bar.x}
+          x={bar.x}
+          y={79 - bar.height}
+          width="8"
+          height={bar.height}
+          rx="2"
+          fill={index === bars.length - 1 ? SIGNAL : "#8992A6"}
+          animate={{ scaleY: [0.42, 1, 0.42] }}
+          transition={{ duration: 2.2, delay: bar.delay, repeat: Infinity, ease: "easeInOut" }}
+          style={{ transformOrigin: "bottom" }}
+        />
+      ))}
+      <motion.path
+        d="M30 64L47 55L60 60L77 39"
+        stroke="#F7F8FC"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="4 4"
+        animate={{ strokeDashoffset: [0, -16] }}
+        transition={{ duration: 1.7, repeat: Infinity, ease: "linear" }}
       />
-      <motion.rect
-        x="34"
-        y="38"
-        width="10"
-        height="30"
-        rx="3"
-        fill="#52525B"
-        animate={{ height: [20, 30, 20], y: [48, 38, 48] }}
-        transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-      />
-      <motion.rect
-        x="50"
-        y="28"
-        width="10"
-        height="40"
-        rx="3"
-        fill="#38BDF8"
-        animate={{ height: [30, 40, 30], y: [38, 28, 38] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-      />
-      <motion.rect
-        x="66"
-        y="22"
-        width="10"
-        height="46"
-        rx="3"
-        fill="#FF6B5E"
-        animate={{ height: [36, 46, 36], y: [32, 22, 32] }}
-        transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-      />
-    </svg>
+    </DeviceFrame>
   );
 }
 
 export function OngoingSupportAnim() {
   return (
-    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="14" width="76" height="60" rx="10" fill="#18181B" stroke="#27272A" strokeWidth="1.5" />
-
-      {/* Chat Bubbles */}
-      <rect x="18" y="26" width="38" height="18" rx="6" fill="#27272A" />
-      <rect x="24" y="32" width="26" height="6" rx="3" fill="#52525B" />
-
+    <DeviceFrame>
+      <rect x="29" y="39" width="35" height="14" rx="5" fill="#252C3D" />
+      <rect x="34" y="44" width="18" height="3" rx="1.5" fill="#A4ADBF" />
       <motion.g
-        animate={{ y: [-2, 2, -2] }}
+        animate={{ y: [-3, 3, -3] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <rect x="34" y="48" width="38" height="18" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
-        <rect x="40" y="54" width="20" height="6" rx="3" fill="#FF6B5E" />
+        <rect x="48" y="61" width="35" height="14" rx="5" fill="#F0F2F7" />
+        <rect x="53" y="66" width="18" height="3" rx="1.5" fill={SIGNAL} />
       </motion.g>
-
-      {/* Active Pulse Indicator */}
       <motion.circle
-        cx="68"
-        cy="26"
+        cx="79"
+        cy="35"
         r="4"
-        fill="#FF6B5E"
-        animate={{ scale: [1, 1.3, 1] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        fill={SIGNAL}
+        animate={{ scale: [1, 1.45, 1], opacity: [1, 0.45, 1] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
       />
-    </svg>
+      <path d="M29 82H83" stroke="#424A5E" strokeWidth="2" strokeLinecap="round" />
+      <SignalDot cx={35} cy={82} />
+      <SignalDot cx={43} cy={82} delay={0.2} />
+      <SignalDot cx={51} cy={82} delay={0.4} />
+    </DeviceFrame>
   );
 }
