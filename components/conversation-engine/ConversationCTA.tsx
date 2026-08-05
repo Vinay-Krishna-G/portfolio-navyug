@@ -23,7 +23,7 @@ export default function ConversationCTA({ message }: ConversationCTAProps) {
       </div>
 
       {/* CTA Message Box */}
-      <div className="p-6 sm:p-7 rounded-2xl rounded-bl-xs bg-[#F8FFF1] border border-[rgba(185,255,102,0.3)] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6 max-w-full sm:max-w-[85%]">
+      <div className="p-6 sm:p-7 rounded-2xl rounded-bl-xs bg-[#FFF0EE] border border-[rgba(255,107,94,0.3)] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6 max-w-full sm:max-w-[85%]">
         <div className="flex flex-col gap-1">
           <span className="text-base font-bold text-neutral-900 leading-snug">
             {message.content}

@@ -113,7 +113,7 @@ export default function ContactSection() {
               >
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl"
-                  style={{ background: "var(--ny-lime-dim)", border: "1px solid rgba(185,255,102,0.3)" }}
+                  style={{ background: "var(--ny-lime-dim)", border: "1px solid rgba(255,107,94,0.3)" }}
                 >
                   ✓
                 </div>

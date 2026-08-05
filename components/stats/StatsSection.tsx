@@ -10,7 +10,7 @@ const STATS = [
     icon: HiOutlineBolt,
     title: "Performance First",
     description: "Fast loading websites. Every build is optimized for Core Web Vitals.",
-    iconBg: "rgba(185, 255, 102, 0.25)",
+    iconBg: "rgba(255, 107, 94, 0.25)",
     iconColor: "#4B7512",
   },
   {
@@ -55,7 +55,7 @@ export default function StatsSection() {
           className="w-full rounded-[24px] overflow-hidden border transition-all duration-300"
           style={{
             background: "linear-gradient(180deg, #FCFFF8 0%, #F5FCEE 100%)",
-            border: "1px solid rgba(185, 255, 102, 0.30)",
+            border: "1px solid rgba(255, 107, 94, 0.30)",
             boxShadow: "0 2px 6px rgba(0, 0, 0, 0.03), 0 12px 28px rgba(0, 0, 0, 0.05)",
           }}
           initial={{ opacity: 0, y: 20 }}
@@ -88,9 +88,9 @@ export default function StatsSection() {
                       <span
                         className="text-[10px] font-bold tracking-wide uppercase px-2 py-0.5 rounded-full inline-block mt-0.5 border"
                         style={{
-                          background: "rgba(185, 255, 102, 0.18)",
+                          background: "rgba(255, 107, 94, 0.18)",
                           color: "#3B6E00",
-                          borderColor: "rgba(185, 255, 102, 0.30)",
+                          borderColor: "rgba(255, 107, 94, 0.30)",
                         }}
                       >
                         {item.stat} {item.statLabel}

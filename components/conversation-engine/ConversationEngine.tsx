@@ -70,7 +70,7 @@ export default function ConversationEngine({
 
         {/* ── Main 1080px Conversation Container Panel ── */}
         <motion.div
-          className="w-full max-w-[1080px] bg-[#FAFAFA] rounded-[24px] border border-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.02),0_12px_28px_rgba(0,0,0,0.04)] overflow-hidden"
+          className="w-full max-w-[1080px] bg-[#F7F8FC] rounded-[24px] border border-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.02),0_12px_28px_rgba(0,0,0,0.04)] overflow-hidden"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

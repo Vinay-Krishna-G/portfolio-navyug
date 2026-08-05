@@ -22,7 +22,7 @@ export default function LoadingScreen() {
       {isLoading && (
         <motion.div
           key="loading-screen"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FAFAFA] select-none"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#F7F8FC] select-none"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
         >
@@ -30,7 +30,7 @@ export default function LoadingScreen() {
           <div
             className="absolute w-72 h-72 rounded-full pointer-events-none"
             style={{
-              background: "radial-gradient(circle, rgba(185,255,102,0.18) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(255,107,94,0.18) 0%, transparent 70%)",
             }}
           />
 

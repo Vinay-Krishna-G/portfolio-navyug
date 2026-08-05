@@ -3,7 +3,7 @@ import NavYugLogo from "@/components/branding/NavYugLogo";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-[#FAFAFA] text-neutral-900 select-none">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-[#F7F8FC] text-[#0B1020] select-none">
       <div className="mb-6">
         <NavYugLogo variant="full" size={60} priority />
       </div>

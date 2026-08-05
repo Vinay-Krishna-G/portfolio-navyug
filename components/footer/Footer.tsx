@@ -24,13 +24,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#090909] pt-20 pb-12 border-t border-white/5 text-[#8a8a8a] select-none">
+    <footer className="relative bg-[#080C18] pt-20 pb-12 border-t border-white/5 text-[#9EA6B8] select-none">
       {/* Subtle top ambient glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[250px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at top, rgba(185, 255, 102, 0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse at top, rgba(255, 107, 94, 0.09) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -49,7 +49,7 @@ const Footer = () => {
               className="group font-sans text-[14px] text-[#8a8a8a] hover:text-[#f5f5f5] transition-colors flex items-center w-fit"
             >
               Web Platforms
-              <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#B9FF66] text-[10px]">
+              <span className="ml-1.5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#FF6B5E] text-[10px]">
                 ↗
               </span>
             </a>
@@ -170,7 +170,7 @@ const Footer = () => {
             <div className="flex flex-col gap-1 mb-1">
               <a
                 href={`mailto:${NAVYUG_EMAIL}`}
-                className="font-mono text-[13px] text-white hover:text-[#B9FF66] transition-colors"
+                className="font-mono text-[13px] text-white hover:text-[#FF6B5E] transition-colors"
               >
                 {NAVYUG_EMAIL}
               </a>
@@ -244,12 +244,12 @@ const Footer = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full h-[48px] bg-white/[0.03] border border-[rgba(185,255,102,0.18)] hover:border-[rgba(185,255,102,0.35)] focus:border-[#B9FF66] focus:shadow-[0_0_0_4px_rgba(185,255,102,0.12)] rounded-2xl px-4 text-xs text-white placeholder-white/55 focus:outline-none transition-all duration-200 pr-12 font-sans"
+                  className="w-full h-[48px] bg-white/[0.03] border border-[rgba(255,107,94,0.24)] hover:border-[rgba(255,107,94,0.45)] focus:border-[#FF6B5E] focus:shadow-[0_0_0_4px_rgba(255,107,94,0.16)] rounded-2xl px-4 text-xs text-white placeholder-white/55 focus:outline-none transition-all duration-200 pr-12 font-sans"
                 />
                 <button
                   type="submit"
                   aria-label="Subscribe to Stay Updated"
-                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl flex items-center justify-center text-[#B9FF66] hover:brightness-110 focus:outline-none group cursor-pointer"
+                  className="absolute right-2 top-2 bottom-2 px-3 rounded-xl flex items-center justify-center text-[#FF6B5E] hover:brightness-110 focus:outline-none group cursor-pointer"
                 >
                   <span className="text-[20px] leading-none transition-all duration-200 group-hover/input:translate-x-1">
                     →

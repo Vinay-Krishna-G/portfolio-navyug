@@ -27,7 +27,7 @@ export function WebDesignAnim() {
         width="34"
         height="6"
         rx="3"
-        fill="#B9FF66"
+        fill="#FF6B5E"
         animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -47,7 +47,7 @@ export function WebDesignAnim() {
         animate={{ y: [34, 31, 34] }}
         transition={{ duration: 3.0, repeat: Infinity, ease: "easeInOut" }}
       />
-      <circle cx="63" cy="48" r="5" fill="#B9FF66" opacity="0.8" />
+      <circle cx="63" cy="48" r="5" fill="#FF6B5E" opacity="0.8" />
     </svg>
   );
 }
@@ -69,7 +69,7 @@ export function AiAutomationAnim() {
       />
       
       {/* Active Beams */}
-      <line x1="24" y1="44" x2="44" y2="26" stroke="#B9FF66" strokeWidth="1.5" opacity="0.7" />
+      <line x1="24" y1="44" x2="44" y2="26" stroke="#FF6B5E" strokeWidth="1.5" opacity="0.7" />
       <line x1="44" y1="26" x2="64" y2="44" stroke="#38BDF8" strokeWidth="1.5" opacity="0.7" />
 
       {/* Pulsing Nodes */}
@@ -83,7 +83,7 @@ export function AiAutomationAnim() {
         cx="44"
         cy="44"
         r="7"
-        fill="#B9FF66"
+        fill="#FF6B5E"
         animate={{ scale: [1, 1.25, 1], opacity: [0.8, 1, 0.8] }}
         transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -103,7 +103,7 @@ export function BrandIdentityAnim() {
         width="22"
         height="22"
         rx="6"
-        fill="#B9FF66"
+        fill="#FF6B5E"
         animate={{ rotate: [0, 90, 0], scale: [1, 0.9, 1] }}
         transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -112,7 +112,7 @@ export function BrandIdentityAnim() {
         cy="39"
         r="11"
         fill="#3F3F46"
-        stroke="#B9FF66"
+        stroke="#FF6B5E"
         strokeWidth="1.5"
         animate={{ scale: [0.9, 1.1, 0.9] }}
         transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
@@ -142,7 +142,7 @@ export function EcommerceAnim() {
         <rect x="20" y="46" width="16" height="3" rx="1.5" fill="#A1A1AA" />
 
         <rect x="46" y="24" width="24" height="32" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
-        <rect x="50" y="28" width="16" height="14" rx="4" fill="#B9FF66" />
+        <rect x="50" y="28" width="16" height="14" rx="4" fill="#FF6B5E" />
         <rect x="50" y="46" width="16" height="3" rx="1.5" fill="#A1A1AA" />
 
         <rect x="76" y="24" width="24" height="32" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
@@ -150,7 +150,7 @@ export function EcommerceAnim() {
 
       {/* Cart Badge */}
       <rect x="16" y="60" width="56" height="8" rx="4" fill="#27272A" />
-      <circle cx="64" cy="64" r="5" fill="#B9FF66" />
+      <circle cx="64" cy="64" r="5" fill="#FF6B5E" />
     </svg>
   );
 }
@@ -197,7 +197,7 @@ export function SeoPerformanceAnim() {
         width="10"
         height="46"
         rx="3"
-        fill="#B9FF66"
+        fill="#FF6B5E"
         animate={{ height: [36, 46, 36], y: [32, 22, 32] }}
         transition={{ duration: 2.0, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
       />
@@ -219,7 +219,7 @@ export function OngoingSupportAnim() {
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
         <rect x="34" y="48" width="38" height="18" rx="6" fill="#27272A" stroke="#3F3F46" strokeWidth="1" />
-        <rect x="40" y="54" width="20" height="6" rx="3" fill="#B9FF66" />
+        <rect x="40" y="54" width="20" height="6" rx="3" fill="#FF6B5E" />
       </motion.g>
 
       {/* Active Pulse Indicator */}
@@ -227,7 +227,7 @@ export function OngoingSupportAnim() {
         cx="68"
         cy="26"
         r="4"
-        fill="#B9FF66"
+        fill="#FF6B5E"
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
       />

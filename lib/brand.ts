@@ -5,8 +5,8 @@ export const BRAND = {
   supportingText: "Built for ambitious businesses.",
   email: "hello@navyug.in",
   websiteUrl: "https://navyug.in",
-  themeColor: "#FAFAFA",
-  accentLime: "#B9FF66",
+  themeColor: "#F7F8FC",
+  accentLime: "#FF6B5E",
   assets: {
     fullLogo: "/branding/full-logo.png",
     fullLogoWebp: "/branding/full-logo.webp",

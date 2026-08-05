@@ -106,9 +106,9 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
       onMouseLeave={handleMouseLeave}
       className="card-premium overflow-hidden relative cursor-pointer flex flex-col justify-between group rounded-[24px] bg-white transition-all duration-500"
       style={{
-        borderColor: isHovered ? "rgba(185,255,102,0.4)" : "rgba(0,0,0,0.05)",
+        borderColor: isHovered ? "rgba(255,107,94,0.4)" : "rgba(0,0,0,0.05)",
         boxShadow: isHovered
-          ? "0 0 0 1px rgba(185,255,102,0.18), 0 16px 50px rgba(0,0,0,0.10)"
+          ? "0 0 0 1px rgba(255,107,94,0.18), 0 16px 50px rgba(0,0,0,0.10)"
           : "0 8px 30px rgba(0,0,0,0.05)",
       }}
       initial={{ opacity: 0, y: 24 }}
@@ -163,8 +163,8 @@ export default function LivingPreview({ project, index }: LivingPreviewProps) {
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.span
-            className="text-xs font-bold px-5 py-2.5 rounded-full shadow-lg border border-[#B9FF66]/50"
-            style={{ background: "#B9FF66", color: "#0F0F0F" }}
+            className="text-xs font-bold px-5 py-2.5 rounded-full shadow-lg border border-[#FF6B5E]/50"
+            style={{ background: "#FF6B5E", color: "#FFFFFF" }}
             animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >

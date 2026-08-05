@@ -43,7 +43,7 @@ export default function ConversationBubble({ message }: ConversationBubbleProps)
         className={`p-4 sm:p-5 rounded-2xl shadow-xs transition-shadow duration-200 hover:shadow-md ${
           isClient
             ? "bg-[#F7F7F7] border border-black/5 rounded-br-xs text-neutral-900"
-            : "bg-[#F8FFF1] border border-[rgba(185,255,102,0.25)] rounded-bl-xs text-neutral-900"
+            : "bg-[#FFF0EE] border border-[rgba(255,107,94,0.25)] rounded-bl-xs text-neutral-900"
         } ${sizeClass}`}
       >
         <div className="text-sm sm:text-[15px] leading-relaxed font-sans font-normal">

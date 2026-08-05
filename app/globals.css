@@ -5,31 +5,34 @@
 /* ─── NavYug Unified Design System Tokens — Apple / Linear / Vercel Grade ─── */
 :root {
   /* Backgrounds */
-  --ny-bg:            #FAFAF8;
+  --ny-bg:            #F7F8FC;
   --ny-surface:       #FFFFFF;
-  --ny-surface-muted: #F6F6F3;
+  --ny-surface-muted: #EEF1F7;
+  --ny-surface-2:     #EEF1F7;
+  --ny-surface-3:     #E6EAF2;
 
   /* Text */
-  --ny-text:          #111111;
-  --ny-foreground:    #111111;
-  --ny-muted:         #686B72;
-  --ny-dim:           #9E9EA5;
+  --ny-text:          #0B1020;
+  --ny-foreground:    #0B1020;
+  --ny-muted:         #5D6475;
+  --ny-dim:           #8C94A8;
 
-  /* Accent — NavYug Signature Lime */
-  --ny-accent:        #B9FF66;
-  --ny-accent-fg:     #0F0F0F;
-  --ny-lime:          #B9FF66;
-  --ny-lime-hover:    #C8FF7C;
-  --ny-lime-dim:      rgba(185, 255, 102, 0.15);
+  /* Accent — NavYug Signature Coral */
+  --ny-accent:        #FF6B5E;
+  --ny-accent-hover:  #E95448;
+  --ny-accent-fg:     #FFFFFF;
+  --ny-lime:          #FF6B5E;
+  --ny-lime-hover:    #E95448;
+  --ny-lime-dim:      rgba(255, 107, 94, 0.14);
 
   /* Unified Border Token */
-  --ny-border:        #E7E7E3;
-  --ny-border-lg:     #DCDCD4;
+  --ny-border:        #E1E5EE;
+  --ny-border-lg:     #D2D8E5;
 
   /* Soft Natural Shadows (Tilted from #111111) */
-  --shadow-sm:        0 2px 10px rgba(17,17,17,.04);
-  --shadow-md:        0 8px 30px rgba(17,17,17,.06);
-  --shadow-lg:        0 20px 60px rgba(17,17,17,.08);
+  --shadow-sm:        0 2px 10px rgba(11,16,32,.04);
+  --shadow-md:        0 8px 30px rgba(11,16,32,.06);
+  --shadow-lg:        0 20px 60px rgba(11,16,32,.08);
 
   /* Formalized Radius Rules */
   --radius-button:    9999px;
@@ -45,7 +48,7 @@
   --duration-slow:    600ms;
 
   /* Service card tints */
-  --ny-tint-lime:   rgba(185, 255, 102, 0.10);
+  --ny-tint-lime:   rgba(255, 107, 94, 0.10);
   --ny-tint-blue:   rgba(99,  170, 255, 0.10);
   --ny-tint-purple: rgba(167, 139, 250, 0.10);
   --ny-tint-amber:  rgba(251, 191,  36, 0.10);
@@ -53,7 +56,7 @@
   --ny-tint-rose:   rgba(251, 113, 133, 0.10);
 
   /* Icon bg tints */
-  --ny-icon-lime:   rgba(185, 255, 102, 0.20);
+  --ny-icon-lime:   rgba(255, 107, 94, 0.20);
   --ny-icon-blue:   rgba(99,  170, 255, 0.18);
   --ny-icon-purple: rgba(167, 139, 250, 0.18);
   --ny-icon-amber:  rgba(251, 191,  36, 0.18);
@@ -221,8 +224,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(180deg, #C9FF73 0%, #B9FF66 100%);
-  color: #0F0F0F;
+  background: linear-gradient(180deg, #FF7E72 0%, #FF6B5E 100%);
+  color: #FFFFFF;
   font-size: 0.875rem;
   font-weight: 600;
   padding: 0.875rem 2rem;
@@ -231,12 +234,12 @@
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(185, 255, 102, 0.25);
+  box-shadow: 0 12px 30px rgba(255, 107, 94, 0.24);
 }
 .btn-primary:hover {
-  background: linear-gradient(180deg, #D4FF85 0%, #A8F547 100%);
+  background: linear-gradient(180deg, #FF8E84 0%, #E95448 100%);
   transform: translateY(-1.5px);
-  box-shadow: 0 16px 36px rgba(185, 255, 102, 0.4);
+  box-shadow: 0 16px 36px rgba(255, 107, 94, 0.36);
 }
 .btn-primary:active { transform: translateY(0); }
 
@@ -261,14 +264,14 @@
   transform: translateY(-1px);
 }
 
-/* ─── Lime badge / highlight ─────────────────────────────── */
+/* ─── Accent badge / highlight ───────────────────────────── */
 .badge-lime {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   background: var(--ny-lime-dim);
-  color: #3a7a00;
-  border: 1px solid rgba(185, 255, 102, 0.35);
+  color: #B43A30;
+  border: 1px solid rgba(255, 107, 94, 0.35);
   border-radius: 9999px;
   font-size: 0.7rem;
   font-weight: 600;
@@ -291,4 +294,3 @@ nextjs-portal,
 [data-nextjs-toast] {
   display: none !important;
 }
-

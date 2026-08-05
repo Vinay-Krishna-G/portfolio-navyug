@@ -13,7 +13,7 @@ export default function TypingIndicator() {
       </div>
 
       {/* Typing Bubble */}
-      <div className="px-4 py-3 rounded-2xl rounded-bl-xs bg-[#F8FFF1] border border-[rgba(185,255,102,0.25)] flex items-center gap-1.5 shadow-xs">
+      <div className="px-4 py-3 rounded-2xl rounded-bl-xs bg-[#FFF0EE] border border-[rgba(255,107,94,0.25)] flex items-center gap-1.5 shadow-xs">
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}

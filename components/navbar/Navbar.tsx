@@ -59,7 +59,7 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 pointer-events-none"
       style={{
-        background: scrolled ? "transparent" : "rgba(250,250,250,0.90)",
+        background: scrolled ? "transparent" : "rgba(247,248,252,0.92)",
         backdropFilter: scrolled ? "none" : "blur(14px)",
         borderBottom: scrolled ? "1px solid transparent" : "1px solid rgba(0,0,0,0.06)",
       }}
@@ -111,7 +111,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="activeNavIndicatorBar"
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-[2px] rounded-full bg-[#B9FF66]"
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-[2px] rounded-full bg-[#FF6B5E]"
                         transition={{ duration: 0.25, ease: "easeOut" }}
                       />
                     )}
@@ -127,7 +127,7 @@ export default function Navbar() {
           <a
             href="#contact"
             className="btn-primary text-sm font-bold px-6 py-3 rounded-full transition-all duration-250 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(0,0,0,0.08)] hover:brightness-105 cursor-pointer"
-            style={{ background: "#B9FF66", color: "#0F0F0F" }}
+            style={{ background: "#FF6B5E", color: "#FFFFFF" }}
           >
             Let&apos;s Talk →
           </a>
@@ -173,7 +173,7 @@ export default function Navbar() {
         animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
         style={{
-          background: "rgba(250,250,250,0.97)",
+          background: "rgba(247,248,252,0.97)",
           backdropFilter: "blur(14px)",
           borderTop: "1px solid var(--ny-border)",
         }}
@@ -193,7 +193,7 @@ export default function Navbar() {
           <a
             href="#contact"
             className="btn-primary text-sm w-fit mt-2 font-bold px-6 py-3 rounded-full"
-            style={{ background: "#B9FF66", color: "#0F0F0F" }}
+            style={{ background: "#FF6B5E", color: "#FFFFFF" }}
             onClick={() => setMenuOpen(false)}
           >
             Let&apos;s Talk →

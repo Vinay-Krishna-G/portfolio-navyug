@@ -5,5 +5,5 @@ export const NAVYUG_CONVERSATION_CONFIG: ConversationConfig = {
   subtitle: "Premium Digital Studio",
   availability: "Available for new projects",
   responseTime: "Usually replies within a few hours",
-  accentLime: "#B9FF66",
+  accentLime: "#FF6B5E",
 };

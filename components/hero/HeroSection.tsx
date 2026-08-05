@@ -30,7 +30,7 @@ export default function HeroSection() {
       <div
         className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full pointer-events-none z-0"
         style={{
-          background: "radial-gradient(circle, rgba(185,255,102,0.05) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(255,107,94,0.08) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -45,7 +45,7 @@ export default function HeroSection() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Headline */}
-          <h1 className="font-display font-extrabold text-[#0F0F0F] tracking-tight leading-[1.08] text-[clamp(2.75rem,5.5vw,5rem)] max-w-[780px] mb-0">
+          <h1 className="font-display font-extrabold text-[#0B1020] tracking-tight leading-[1.08] text-[clamp(2.75rem,5.5vw,5rem)] max-w-[780px] mb-0">
             We build digital products that grow businesses.
           </h1>
 
@@ -59,7 +59,7 @@ export default function HeroSection() {
             <a
               href="#contact"
               className="btn-primary text-sm font-bold px-7 py-3.5 rounded-full shadow-md transition-all duration-250 hover:shadow-lg hover:brightness-105 hover:-translate-y-0.5 cursor-pointer"
-              style={{ background: "#B9FF66", color: "#0F0F0F" }}
+              style={{ background: "#FF6B5E", color: "#FFFFFF" }}
             >
               Start Your Project →
             </a>

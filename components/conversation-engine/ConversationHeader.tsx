@@ -10,7 +10,7 @@ interface ConversationHeaderProps {
 
 export default function ConversationHeader({ config }: ConversationHeaderProps) {
   return (
-    <div className="w-full px-6 py-4 rounded-t-[24px] bg-[#FAFAFA] border-b border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 select-none">
+    <div className="w-full px-6 py-4 rounded-t-[24px] bg-[#F7F8FC] border-b border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 select-none">
       {/* Left: Studio Identity */}
       <div className="flex items-center gap-3">
         <NavYugLogo variant="mark" size={28} priority className="shrink-0" />
@@ -30,7 +30,7 @@ export default function ConversationHeader({ config }: ConversationHeaderProps) 
       </div>
 
       {/* Right: Availability Badge */}
-      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F8FFF1] border border-[rgba(185,255,102,0.3)] text-xs font-semibold text-[#4F7A17] w-fit">
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFF0EE] border border-[rgba(255,107,94,0.3)] text-xs font-semibold text-[#B43A30] w-fit">
         <span className="w-2 h-2 rounded-full bg-[#86D227] animate-pulse" />
         <span>{config.availability}</span>
       </div>

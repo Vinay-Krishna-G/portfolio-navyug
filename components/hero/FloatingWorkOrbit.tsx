@@ -310,7 +310,7 @@ function LiveCard({ card }: { card: FloatingCard }) {
 
           {/* Category Highlight Overlay on Hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2 z-20">
-            <span className="text-[9px] font-bold text-[#0F0F0F] bg-[#B9FF66] px-2 py-0.5 rounded-full shadow-xs">
+            <span className="text-[9px] font-bold text-white bg-[#FF6B5E] px-2 py-0.5 rounded-full shadow-xs">
               {card.category}
             </span>
           </div>
@@ -381,4 +381,3 @@ export default function FloatingWorkOrbit() {
     </>
   );
 }
-
